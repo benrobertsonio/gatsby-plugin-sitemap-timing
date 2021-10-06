@@ -1,0 +1,11 @@
+import React from 'react';
+const { onRenderBody } = require('gatsby-plugin-sitemap/gatsby-ssr');
+
+exports.onRenderBody = (args, pluginOptions) => {
+  const { gatsbyPlugins = [] } = pluginOptions;
+  for (const plugin of gatsbyPlugins) {
+    if (plugin.name === 'gatsby-plugin-sitemap') {
+      onRenderBody(args, plugin.options);
+    }
+  }
+};
